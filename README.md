@@ -2,12 +2,13 @@
 
 TBD
 
-Requirements to run:
+# Requirements to run:
 
 - opencv-python
 
-By:
-Chitra Mukherjee
-Khushi Adukia
-Kevin Ni
-Lucas Chew
+# By:
+
+- Chitra Mukherjee
+- Khushi Adukia
+- Kevin Ni
+- Lucas Chew
