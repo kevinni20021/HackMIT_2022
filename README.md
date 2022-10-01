@@ -2,9 +2,11 @@
 
 TBD
 
-# Requirements to run:
-
+# Requirement
+- python 3.8 +
 - opencv-python
+- tensorflow-cpu for python
+- keras
 
 # By:
 
