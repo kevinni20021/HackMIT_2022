@@ -58,4 +58,5 @@ model = tf.keras.Sequential([
 ])
 
 model.compile(loss='sparse_categorical_crossentropy',optimizer='adam',metrics=['accuracy'])
-history = model.fit(train_ds, batch_size=32,validation_batch_size=32, validation_data=validation_ds,epochs=10)
+history = model.fit(train_ds, batch_size=32,validation_batch_size=32, validation_data=validation_ds,epochs= 3)
+model.save("ASL_CNN.model")
