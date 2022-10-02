@@ -1,7 +1,10 @@
 import cv2 as cv
 import numpy as np
 import tensorflow as tf
+import os
 
+#name = 'Z'
+#directory = 'C:\\Users\\lucas\\Downloads\\Data\\' + name
 model = tf.keras.models.load_model("ASL_CNN.model")
 letterOptions = ['a', 'b', 'c', 'd', 'del', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'nothing', 'o', 'p', 'q',
                  'r', 's', 'space', 't', 'u', 'v', 'w', 'x', 'y', 'z']
@@ -18,6 +21,8 @@ def callDatabase(img, data):
 
 
 vid = cv.VideoCapture(0)
+os.chdir(directory)
+counter = 0
 
 while True:
     ret, frame = vid.read()
@@ -44,6 +49,8 @@ while True:
 
     # Draw Rectangle from SkinMask contours onto original frame
     frameCopy = frame.copy()
+    #if counter > 400:
+    #    break
     for c in contours:
         rect = cv.boundingRect(c)
         if rect[2] < 100 or rect[3] < 100: continue
@@ -54,8 +61,10 @@ while True:
         cropped = frameCopy[y-10:max(y+h, maxSize), x-10:max(x+w, maxSize)]
         if cropped.shape[0] > 0 and cropped.shape[1] > 0:
             cropped = cv.resize(cropped, (ImageSize, ImageSize), interpolation=cv.INTER_AREA)
-            cv.putText(frame, callDatabase(cropped, model), (x, y - 10), cv.FONT_HERSHEY_SIMPLEX, 0.9, (36, 255, 12), 2)
+            #cv.putText(frame, callDatabase(cropped, model), (x, y - 10), cv.FONT_HERSHEY_SIMPLEX, 0.9, (36, 255, 12), 2)
             cv.imshow('cropped', cropped)
+            #cv.imwrite(name + 'DataModel' + str(counter) + '00.jpg', cropped)
+            counter += 1
 
 
     # Shows Original frame and skinMask
@@ -65,6 +74,6 @@ while True:
     if cv.waitKey(1) & 0xFF == ord('q'):
         break
 
-vid.relase()
+vid.release()
 
 cv.destroyAllWindows()
