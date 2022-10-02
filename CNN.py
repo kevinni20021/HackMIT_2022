@@ -33,6 +33,7 @@ test_ds = tf.keras.utils.image_dataset_from_directory(
     batch_size=BATCH_SIZE)
 
 class_names = train_ds.class_names
+print(class_names)
 #creating the model
 model = tf.keras.Sequential([
     tf.keras.layers.Rescaling(1./255),
@@ -58,5 +59,5 @@ model = tf.keras.Sequential([
 ])
 
 model.compile(loss='sparse_categorical_crossentropy',optimizer='adam',metrics=['accuracy'])
-history = model.fit(train_ds, batch_size=32,validation_batch_size=32, validation_data=validation_ds,epochs=2)
+history = model.fit(train_ds, batch_size=32,validation_batch_size=32, validation_data=validation_ds,epochs=10)
 model.save("ASL_CNN.model")
