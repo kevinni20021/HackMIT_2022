@@ -8,16 +8,11 @@ import os
 #directory = 'C:\\Users\\lucas\\Downloads\\Data\\' + name
 model = tf.keras.models.load_model("ASL_CNN.model")
 letterOptions = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q',
-<<<<<<< Updated upstream
-                 'r', 's' , 't', 'u', 'v', 'w', 'x', 'y', 'z', '<', '', ' ']
-ImageSize = 200
-=======
                  'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '<', '', ' ']
-ImageSize = 100
+ImageSize = 64
 #os.chdir(directory)
 
 f = open("output.txt", "a")
->>>>>>> Stashed changes
 
 def callDatabase(img, data):
     new_img = img.reshape(-1, ImageSize, ImageSize, 3)
@@ -73,7 +68,7 @@ while True:
             cv.putText(frame, letter, (x, y - 2), cv.FONT_HERSHEY_SIMPLEX, 0.9, (36, 255, 12), 2)
             cv.imshow('cropped', cropped)
             #cv.imwrite(name + 'DataModel' + str(counter) + '00.jpg', cropped)
-            counter += 1
+            #counter += 1
 
 
     # Shows Original frame and skinMask
