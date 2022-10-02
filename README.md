@@ -1,12 +1,11 @@
 # HackMIT_2022
 
-TBD
+The Temporary Cancer Land
 
 # Requirement
 - python 3.8 +
 - opencv-python
-- tensorflow-cpu for python
-- keras
+- tensorflow-cpu
 
 # By:
 
