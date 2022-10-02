@@ -8,7 +8,7 @@ import os
 model = tf.keras.models.load_model("ASL_CNN.model")
 letterOptions = ['a', 'b', 'c', 'd', 'del', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'nothing', 'o', 'p', 'q',
                  'r', 's', 'space', 't', 'u', 'v', 'w', 'x', 'y', 'z']
-ImageSize = 200
+ImageSize = 100
 
 def callDatabase(img, data):
     new_img = img.reshape(-1, ImageSize, ImageSize, 3)
@@ -21,8 +21,8 @@ def callDatabase(img, data):
 
 
 vid = cv.VideoCapture(0)
-os.chdir(directory)
-counter = 0
+#os.chdir(directory)
+#counter = 0
 
 while True:
     ret, frame = vid.read()
@@ -61,10 +61,10 @@ while True:
         cropped = frameCopy[y-10:max(y+h, maxSize), x-10:max(x+w, maxSize)]
         if cropped.shape[0] > 0 and cropped.shape[1] > 0:
             cropped = cv.resize(cropped, (ImageSize, ImageSize), interpolation=cv.INTER_AREA)
-            #cv.putText(frame, callDatabase(cropped, model), (x, y - 10), cv.FONT_HERSHEY_SIMPLEX, 0.9, (36, 255, 12), 2)
+            cv.putText(frame, callDatabase(cropped, model), (x, y - 10), cv.FONT_HERSHEY_SIMPLEX, 0.9, (36, 255, 12), 2)
             cv.imshow('cropped', cropped)
             #cv.imwrite(name + 'DataModel' + str(counter) + '00.jpg', cropped)
-            counter += 1
+            #counter += 1
 
 
     # Shows Original frame and skinMask
