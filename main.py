@@ -73,7 +73,7 @@ while True:
             cv.putText(frame, letter, (x, y - 2), cv.FONT_HERSHEY_SIMPLEX, 0.9, (36, 255, 12), 2)
             cv.imshow('cropped', cropped)
             #cv.imwrite(name + 'DataModel' + str(counter) + '00.jpg', cropped)
-            #counter += 1
+            counter += 1
 
 
     # Shows Original frame and skinMask
