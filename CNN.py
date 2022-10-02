@@ -3,8 +3,8 @@ import os
 import tensorflow as tf
 
 BATCH_SIZE = 32
-IMG_HEIGHT = 64
-IMG_WIDTH = 64
+IMG_HEIGHT = 200
+IMG_WIDTH = 200
 
 base_dir = os.path.join(os.getcwd(), "./ASL_dataset/")
 train_dir = os.path.join(base_dir, 'asl_alphabet_train/asl_alphabet_train')
@@ -58,5 +58,5 @@ model = tf.keras.Sequential([
 ])
 
 model.compile(loss='sparse_categorical_crossentropy',optimizer='adam',metrics=['accuracy'])
-history = model.fit(train_ds, batch_size=32,validation_batch_size=32, validation_data=validation_ds,epochs= 10)
+history = model.fit(train_ds, batch_size=32,validation_batch_size=32, validation_data=validation_ds,epochs=2)
 model.save("ASL_CNN.model")
